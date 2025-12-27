@@ -1,6 +1,5 @@
 # GearGuard - Industrial Maintenance Management System
 
-![GearGuard Banner](https://via.placeholder.com/1200x400?text=GearGuard+Industrial+Management+System)
 
 ## 📋 Table of Contents
 
