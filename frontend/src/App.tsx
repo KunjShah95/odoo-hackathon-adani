@@ -10,6 +10,12 @@ import { TeamsPage } from './pages/TeamsPage';
 import { RequestsPage } from './pages/RequestsPage';
 import { CalendarPage } from './pages/CalendarPage';
 import { ReportsPage } from './pages/ReportsPage';
+import { DocumentationPage } from './pages/DocumentationPage';
+import { CapabilitiesPage } from './pages/CapabilitiesPage';
+import { EcosystemPage } from './pages/EcosystemPage';
+import { EnterprisePage } from './pages/EnterprisePage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
 
 // Protected Route wrapper
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -39,6 +45,12 @@ function AppRoutes() {
       {/* Auth Routes */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/docs" element={<DocumentationPage />} />
+      <Route path="/capabilities" element={<CapabilitiesPage />} />
+      <Route path="/ecosystem" element={<EcosystemPage />} />
+      <Route path="/enterprise" element={<EnterprisePage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
+      <Route path="/terms" element={<TermsPage />} />
 
       {/* Protected App Routes */}
       <Route
@@ -55,6 +67,7 @@ function AppRoutes() {
         <Route path="requests" element={<RequestsPage />} />
         <Route path="calendar" element={<CalendarPage />} />
         <Route path="reports" element={<ReportsPage />} />
+        <Route path="docs" element={<DocumentationPage />} />
       </Route>
 
       {/* Redirect /dashboard to /app */}

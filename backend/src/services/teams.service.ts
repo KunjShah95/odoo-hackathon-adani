@@ -75,3 +75,38 @@ export const removeTeamMember = async (teamId: string, userId: string) => {
         },
     });
 };
+
+// Check if a user is a member of a specific team
+export const isUserTeamMember = async (userId: string, teamId: string): Promise<boolean> => {
+    const membership = await prisma.teamMember.findUnique({
+        where: {
+            userId_teamId: {
+                userId,
+                teamId,
+            },
+        },
+    });
+    return membership !== null;
+};
+
+// Get all members of a team (for assignment dropdown)
+export const getTeamMembersForAssignment = async (teamId: string) => {
+    return await prisma.teamMember.findMany({
+        where: { teamId },
+        include: {
+            user: {
+                select: { id: true, name: true, email: true, role: true },
+            },
+        },
+    });
+};
+
+// Get all teams a user belongs to
+export const getUserTeams = async (userId: string) => {
+    return await prisma.teamMember.findMany({
+        where: { userId },
+        include: {
+            team: true,
+        },
+    });
+};

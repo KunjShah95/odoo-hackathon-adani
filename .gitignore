@@ -21,7 +21,7 @@ build/
 Thumbs.db
 
 # Project specific
-implementation_plan.md
-task.md
+# implementation_plan.md
+# task.md
 backend/node_modules/
 frontend/node_modules/

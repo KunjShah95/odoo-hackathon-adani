@@ -1,144 +1,832 @@
-# GearGuard: The Ultimate Maintenance Tracker
+# 🛠️ GearGuard: The Ultimate Maintenance Tracker
 
-GearGuard is a comprehensive, modern, and intuitive maintenance management system designed to track equipment, manage maintenance teams, and streamline maintenance requests. This document provides a complete overview of the project, its purpose, architecture, and how to get it up and running.
+<div align="center">
 
-## The Problem: Taming the Maintenance Chaos
+![GearGuard Banner](https://img.shields.io/badge/GearGuard-Maintenance_Tracker-blue?style=for-the-badge&logo=gear&logoColor=white)
 
-In today's fast-paced industrial and operational environments, the reliability of equipment is paramount. However, in many organizations, tracking equipment maintenance is a chaotic and fragmented process. Teams often find themselves wrestling with a patchwork of outdated tools and manual methods, such as spreadsheets, emails, and even sticky notes. This disorganization isn't just an inconvenience; it's a significant drain on resources and a threat to operational stability.
+[![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.x-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=flat-square&logo=prisma)](https://www.prisma.io/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-06B6D4?style=flat-square&logo=tailwindcss)](https://tailwindcss.com/)
 
-This traditional approach inevitably leads to a host of problems:
--   **Lost Revenue:** Unexpected equipment downtime directly translates to lost production and, consequently, lost revenue.
--   **Increased Costs:** A reactive approach to maintenance means dealing with emergencies as they arise, which is far more expensive than performing planned, preventive maintenance.
--   **Lack of Visibility:** Without a centralized system, it's nearly impossible to get a clear picture of an asset's maintenance history. This makes it difficult to make informed, data-driven decisions about whether to repair or replace equipment.
--   **Inefficient Team Management:** Managers struggle to assign tasks effectively, track technician workload, and ensure that the right people are working on the right tasks.
--   **Poor Communication:** The gap between equipment operators who report issues and the maintenance teams who fix them leads to delays, misunderstandings, and frustration.
+**A comprehensive, modern, and intuitive maintenance management system designed to track equipment, manage maintenance teams, and streamline maintenance requests.**
 
-## Our Solution: GearGuard - A Unified Command Center for Maintenance
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🏗️ Architecture](#️-system-architecture) • [🔧 API Reference](#-api-reference)
 
-GearGuard was born out of the need to bring order to this chaos. It is a centralized, digital platform that transforms maintenance operations by providing a single source of truth for all maintenance-related activities. Our vision is to empower organizations to transition from a reactive, "fire-fighting" mode to a proactive, predictive maintenance strategy. This shift not only saves time and money but also significantly improves overall operational efficiency and asset longevity.
+</div>
 
-Our approach is grounded in modern software engineering principles, featuring a clear separation between the frontend and backend to ensure scalability, flexibility, and maintainability.
+---
 
--   **Intuitive and Responsive User Interface:** We believe that powerful software doesn't have to be complicated. GearGuard's user interface is meticulously crafted with **React** and **Tailwind CSS**. It is clean, intuitive, and fully responsive, ensuring a seamless experience whether you're on a desktop in the office or on a tablet on the shop floor.
--   **Powerful and Scalable Backend:** The backbone of GearGuard is a robust backend service built with **Node.js** and **Express**. This provides a secure, fast, and scalable REST API that handles all the business logic and data processing, capable of supporting a growing number of users and assets.
--   **Rock-Solid Data Integrity:** At the core of GearGuard lies a **PostgreSQL** database, renowned for its reliability and performance. We use the **Prisma ORM** to manage our database schema and interactions, which provides an additional layer of type safety and ensures that our data remains consistent and accurate.
--   **Real-time Collaboration:** With features like the interactive **Kanban board**, teams can visualize their workflow and track the status of maintenance requests in real-time. This transparency enhances collaboration and keeps everyone on the same page.
+## 📋 Table of Contents
 
-## Key Features
+- [Overview](#-overview)
+- [The Problem](#-the-problem)
+- [Our Solution](#-our-solution)
+- [Key Features](#-key-features)
+- [System Architecture](#️-system-architecture)
+- [Technology Stack](#-technology-stack)
+- [Quick Start](#-quick-start)
+- [Installation Guide](#-installation-guide)
+- [API Reference](#-api-reference)
+- [Frontend Pages & Components](#-frontend-pages--components)
+- [Database Schema](#-database-schema)
+- [Usage Guide](#-usage-guide)
+- [Development Workflow](#-development-workflow)
+- [Contributing](#-contributing)
+- [License](#-license)
 
--   **Centralized Dashboard:** The first thing you see when you log in is a comprehensive dashboard that gives you a bird's-eye view of your entire maintenance operation. Key statistics, recent activity, and overdue tasks are immediately visible, allowing you to spot trends and potential issues at a glance.
--   **Detailed Equipment Management:** Keep an exhaustive record of every piece of equipment. Track serial numbers, specifications, purchase dates, warranty information, and a complete maintenance history for every asset in your inventory.
--   **Efficient Maintenance Team Management:** Create and organize your maintenance teams. Assign team leads, add technicians, and define specializations so that work orders are always routed to the team with the right skills.
--   **Streamlined Maintenance Requests:** The Kanban-style board makes it incredibly simple to submit, track, and manage maintenance requests from initiation to completion. Drag-and-drop functionality allows you to update the status of a request as it moves through the workflow (New, In Progress, Repaired, Scrap).
--   **Proactive Preventive Maintenance:** The integrated calendar view is your tool for scheduling and tracking recurring preventive maintenance tasks. This proactive approach helps you prevent failures before they happen, extending the life of your equipment and reducing unplanned downtime.
--   **Insightful Reporting & Analytics:** Move beyond guesswork. Generate detailed reports on equipment downtime, maintenance costs, team performance, and more. These insights are crucial for optimizing your maintenance strategy and justifying budget decisions.
--   **Granular User Roles & Permissions:** Maintain control over your data with a flexible role-based access control system. Define what different users (Admins, Managers, Technicians, and standard Users) can see and do within the application.
+---
 
-## System Architecture
+## 🎯 Overview
 
-The system is designed with a modern, decoupled architecture. This separation of concerns between the frontend presentation layer, the backend application logic, and the database layer allows for independent development, scaling, and maintenance of each component.
+GearGuard is a centralized, digital platform that transforms maintenance operations by providing a **single source of truth** for all maintenance-related activities. It empowers organizations to transition from reactive, "fire-fighting" mode to a **proactive, predictive maintenance strategy**.
+
+---
+
+## 🏴 The Problem
+
+In today's fast-paced industrial environments, maintenance tracking often involves:
+
+| Challenge | Impact |
+|-----------|--------|
+| 📊 **Fragmented Tools** | Spreadsheets, emails, sticky notes scattered everywhere |
+| 💰 **Lost Revenue** | Unexpected equipment downtime halts production |
+| 📈 **Increased Costs** | Reactive maintenance is 3-10x more expensive than planned maintenance |
+| 👁️ **Poor Visibility** | No clear picture of asset maintenance history |
+| 👥 **Inefficient Teams** | Difficulty tracking workload and task assignments |
+| 💬 **Communication Gaps** | Delays between issue reporting and resolution |
+
+---
+
+## 💡 Our Solution
+
+GearGuard addresses these challenges with a modern, unified approach:
+
+- ✅ **Centralized Dashboard** - Bird's-eye view of all maintenance operations
+- ✅ **Real-time Kanban Board** - Visual workflow management with drag-and-drop
+- ✅ **Proactive Scheduling** - Calendar view for preventive maintenance
+- ✅ **Team Collaboration** - Role-based access and team assignments
+- ✅ **Comprehensive Analytics** - Data-driven insights and reporting
+
+---
+
+## ✨ Key Features
+
+### 🖥️ Dashboard
+- Real-time statistics and KPIs
+- Recent activity timeline
+- Overdue task alerts
+- Quick action buttons
+
+### 🔧 Equipment Management
+- Complete asset registry with detailed records
+- Serial numbers, specifications, warranty tracking
+- Maintenance history per equipment
+- Status tracking (Operational, Under Maintenance, Scrapped)
+
+### 👥 Team Management
+- Create and organize maintenance teams
+- Assign team leads and technicians
+- Define specializations and skills
+- Workload visibility
+
+### 📋 Work Orders (Kanban Board)
+- **Drag-and-drop** status updates
+- Visual workflow: `New → In Progress → Repaired → Scrap`
+- Priority indicators (Critical, High, Medium, Low)
+- Overdue task highlighting
+- Auto-fill team based on equipment selection
+
+### 📅 Calendar View
+- Preventive maintenance scheduling
+- Visual timeline of upcoming tasks
+- Recurring maintenance planning
+
+### 📊 Reports & Analytics
+- Equipment downtime analysis
+- Team performance metrics
+- Request statistics by category/priority
+- Exportable reports
+
+### 🔐 Authentication & Authorization
+- JWT-based secure authentication
+- Role-based access control (Admin, Manager, Technician, User)
+- Session management
+
+---
+
+## 🏗️ System Architecture
 
 ```mermaid
 graph TB
-    subgraph "User Interface (React + Vite)"
+    subgraph "Frontend Layer (React + Vite)"
         A[Authentication Pages]
         B[Dashboard]
         C[Equipment Module]
         D[Team Module]
-        E[Request Module]
+        E[Request Module - Kanban]
         F[Calendar View]
+        G[Reports & Analytics]
     end
 
-    subgraph "Application Backend (Node.js + Express)"
-        G[REST API]
-        H[Authentication Service]
-        I[Equipment Service]
-        J[Team Service]
-        K[Request Service]
+    subgraph "API Layer (Node.js + Express)"
+        H[REST API Gateway]
+        I[Authentication Service]
+        J[Equipment Service]
+        K[Team Service]
+        L[Request Service]
+        M[Dashboard Service]
     end
 
-    subgraph "Data Storage (PostgreSQL)"
-        L[Users]
-        M[Equipment]
-        N[Teams]
-        O[Requests]
+    subgraph "Data Layer (PostgreSQL)"
+        N[Users]
+        O[Equipment]
+        P[Teams & Members]
+        Q[Maintenance Requests]
     end
 
-    A & B & C & D & E & F --> G
-    G --> H & I & J & K
-    H --> L
-    I --> M
-    J --> N
-    K --> O
+    A & B & C & D & E & F & G --> H
+    H --> I & J & K & L & M
+    I --> N
+    J --> O
+    K --> P
+    L --> Q
+    M --> N & O & P & Q
 ```
 
-## Technology Stack
+### Directory Structure
 
--   **Frontend:** React, Vite, TypeScript, Tailwind CSS, Axios
--   **Backend:** Node.js, Express, TypeScript, Prisma
--   **Database:** PostgreSQL
--   **Authentication:** JWT, bcrypt
--   **Development Tools:** Docker, ESLint, Prettier
+```
+gearguard/
+├── 📁 backend/                    # Node.js + Express API
+│   ├── 📁 prisma/
+│   │   ├── schema.prisma          # Database schema
+│   │   └── migrations/            # Database migrations
+│   ├── 📁 src/
+│   │   ├── index.ts               # Entry point
+│   │   ├── app.ts                 # Express app setup
+│   │   ├── 📁 config/             # Configuration files
+│   │   ├── 📁 controllers/        # Route handlers
+│   │   ├── 📁 middleware/         # Auth, validation, error handling
+│   │   ├── 📁 routes/             # API route definitions
+│   │   ├── 📁 services/           # Business logic
+│   │   └── 📁 types/              # TypeScript types
+│   ├── .env.example               # Environment template
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── 📁 frontend/                   # React + Vite SPA
+│   ├── 📁 public/
+│   ├── 📁 src/
+│   │   ├── main.tsx               # Entry point
+│   │   ├── App.tsx                # Root component with routing
+│   │   ├── index.css              # Global styles + Design system
+│   │   ├── 📁 api/                # API client & service modules
+│   │   ├── 📁 components/         # Reusable UI components
+│   │   ├── 📁 context/            # React Context (Auth)
+│   │   ├── 📁 hooks/              # Custom hooks
+│   │   ├── 📁 pages/              # Page components
+│   │   ├── 📁 types/              # TypeScript types
+│   │   └── 📁 utils/              # Helper functions
+│   ├── tailwind.config.js
+│   ├── vite.config.ts
+│   └── package.json
+│
+├── implementation_plan.md         # Development roadmap
+├── task.md                        # Task tracking
+└── README.md                      # This file
+```
 
-## Getting Started
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+| Technology | Purpose |
+|------------|---------|
+| **React 18** | UI Framework |
+| **Vite** | Build Tool & Dev Server |
+| **TypeScript** | Type Safety |
+| **Tailwind CSS** | Styling |
+| **Framer Motion** | Animations |
+| **Axios** | HTTP Client |
+| **Lucide React** | Icons |
+
+### Backend
+| Technology | Purpose |
+|------------|---------|
+| **Node.js** | Runtime |
+| **Express** | Web Framework |
+| **TypeScript** | Type Safety |
+| **Prisma** | ORM |
+| **PostgreSQL** | Database |
+| **JWT** | Authentication |
+| **bcrypt** | Password Hashing |
+| **Zod** | Request Validation |
+
+---
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
--   [Node.js](https://nodejs.org/) (v18 or later)
--   [npm](https://www.npmjs.com/)
--   [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
+- **Node.js** v18 or later
+- **npm** or **yarn**
+- **PostgreSQL** 15.x (or Docker)
+- **Docker** (optional, for database)
 
-### Installation & Setup
+### 5-Minute Setup
 
-1.  **Clone the Repository:**
-    ```bash
-    git clone https://github.com/your-username/gearguard.git
-    cd gearguard
-    ```
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/gearguard.git
+cd gearguard
 
-2.  **Configure Environment Variables:**
-    -   In the `backend` directory, copy the `.env.example` file to a new file named `.env`.
-    -   Update the `DATABASE_URL` in your new `.env` file with your PostgreSQL connection string. The default settings should work with the provided Docker setup.
+# 2. Start PostgreSQL (using Docker)
+docker run --name gearguard-db -e POSTGRES_PASSWORD=HACKER_K -e POSTGRES_DB=gearguard -p 5432:5432 -d postgres:15
 
-3.  **Launch the Database:**
-    -   From the project root, run the following command to start the PostgreSQL database container in the background:
-        ```bash
-        docker-compose up -d
-        ```
+# 3. Setup Backend
+cd backend
+npm install
+cp .env.example .env    # Configure your environment
+npx prisma migrate dev  # Apply database schema
+npm run dev             # Start backend server (port 5000)
 
-4.  **Install Dependencies and Run Migrations:**
-    -   Navigate to the backend, install its dependencies, and apply the database schema.
-        ```bash
-        cd backend
-        npm install
-        npx prisma migrate dev
-        ```
-    -   Navigate to the frontend and install its dependencies.
-        ```bash
-        cd ../frontend
-        npm install
-        ```
+# 4. Setup Frontend (new terminal)
+cd ../frontend
+npm install
+npm run dev             # Start frontend (port 5173)
+```
 
-### Running the Application
+🎉 **Open your browser at `http://localhost:5173`**
 
-1.  **Start the Backend Server:**
-    ```bash
-    cd backend
-    npm run dev
-    ```
-    The backend API will be running at `http://localhost:5000`.
+---
 
-2.  **Start the Frontend Application:**
-    ```bash
-    cd frontend
-    npm run dev
-    ```
-    The frontend will be accessible in your browser at `http://localhost:3000`.
+## 📦 Installation Guide
 
-## Contributing
+### Step 1: Clone the Repository
 
-We enthusiastically welcome contributions from the community! If you have an idea for a new feature, a bug fix, or an improvement to the documentation, we would love to have your help. Please read our [Contributing Guidelines](CONTRIBUTING.md) for a detailed guide on how to get involved.
+```bash
+git clone https://github.com/your-username/gearguard.git
+cd gearguard
+```
 
-## License
+### Step 2: Database Setup
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+#### Option A: Using Docker (Recommended)
+
+```bash
+docker run --name gearguard-db \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=HACKER_K \
+  -e POSTGRES_DB=gearguard \
+  -p 5432:5432 \
+  -d postgres:15
+```
+
+#### Option B: Local PostgreSQL
+
+1. Install PostgreSQL 15.x
+2. Create a database named `gearguard`
+3. Note your connection credentials
+
+### Step 3: Backend Setup
+
+```bash
+cd backend
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+```
+
+Edit `.env` file:
+
+```env
+# Database Configuration
+DATABASE_URL="postgresql://postgres:HACKER_K@localhost:5432/gearguard?schema=public"
+
+# JWT Secret (Change in production!)
+JWT_SECRET="your-super-secret-jwt-key"
+
+# Server Configuration
+PORT=5000
+NODE_ENV=development
+```
+
+Apply database migrations:
+
+```bash
+# Generate Prisma client and apply migrations
+npx prisma migrate dev --name init
+
+# (Optional) Seed with sample data
+npx prisma db seed
+```
+
+Start the backend server:
+
+```bash
+npm run dev
+# Server running at http://localhost:5000
+```
+
+### Step 4: Frontend Setup
+
+```bash
+cd ../frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+# Frontend running at http://localhost:5173
+```
+
+### Step 5: Access the Application
+
+Open your browser and navigate to:
+- **Frontend**: `http://localhost:5173`
+- **API**: `http://localhost:5000/api`
+
+---
+
+## 🔧 API Reference
+
+### Base URL
+```
+http://localhost:5000/api
+```
+
+### Authentication Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `POST` | `/auth/register` | Register new user | ❌ |
+| `POST` | `/auth/login` | User login | ❌ |
+| `POST` | `/auth/logout` | User logout | ✅ |
+| `GET` | `/auth/me` | Get current user | ✅ |
+
+#### Register User
+```http
+POST /api/auth/register
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "securePassword123",
+  "role": "TECHNICIAN",
+  "department": "Maintenance"
+}
+```
+
+#### Login
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "securePassword123"
+}
+```
+
+**Response:**
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "user": {
+    "id": "clx123...",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "role": "TECHNICIAN"
+  }
+}
+```
+
+---
+
+### Equipment Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `GET` | `/equipment` | List all equipment | ✅ |
+| `POST` | `/equipment` | Create equipment | ✅ (Admin/Manager) |
+| `GET` | `/equipment/:id` | Get equipment details | ✅ |
+| `PATCH` | `/equipment/:id` | Update equipment | ✅ (Admin/Manager) |
+| `DELETE` | `/equipment/:id` | Delete equipment | ✅ (Admin) |
+| `GET` | `/equipment/:id/requests` | Get equipment's requests | ✅ |
+
+#### Create Equipment
+```http
+POST /api/equipment
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Conveyor Belt Line 4",
+  "serialNumber": "CB-2024-001",
+  "category": "MACHINERY",
+  "department": "Production",
+  "location": "Factory Floor, Section G",
+  "purchaseDate": "2024-01-15T00:00:00.000Z",
+  "warrantyExpiry": "2027-01-15T00:00:00.000Z",
+  "maintenanceTeamId": "clx456..."
+}
+```
+
+---
+
+### Teams Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `GET` | `/teams` | List all teams | ✅ |
+| `POST` | `/teams` | Create team | ✅ (Admin/Manager) |
+| `GET` | `/teams/:id` | Get team details | ✅ |
+| `PATCH` | `/teams/:id` | Update team | ✅ (Admin/Manager) |
+| `DELETE` | `/teams/:id` | Delete team | ✅ (Admin) |
+| `POST` | `/teams/:id/members` | Add member to team | ✅ (Admin/Manager) |
+| `DELETE` | `/teams/:id/members/:userId` | Remove member | ✅ (Admin/Manager) |
+
+#### Create Team
+```http
+POST /api/teams
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "name": "Electrical Team",
+  "specialization": "Electrical",
+  "description": "Handles all electrical maintenance and repairs"
+}
+```
+
+---
+
+### Maintenance Requests Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `GET` | `/requests` | List all requests | ✅ |
+| `POST` | `/requests` | Create request | ✅ |
+| `GET` | `/requests/:id` | Get request details | ✅ |
+| `PATCH` | `/requests/:id` | Update request | ✅ |
+| `PATCH` | `/requests/:id/status` | Update request status | ✅ (Team Member Only) |
+| `GET` | `/requests/calendar` | Get calendar view data | ✅ |
+| `GET` | `/requests/kanban` | Get kanban board data | ✅ |
+
+#### Create Request
+```http
+POST /api/requests
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "subject": "Main Conveyor Belt Misalignment",
+  "description": "The belt is shifting to the left during heavy load cycles.",
+  "type": "CORRECTIVE",
+  "priority": "CRITICAL",
+  "equipmentId": "clx789...",
+  "teamId": "clx456...",
+  "scheduledDate": "2024-12-28T10:00:00.000Z"
+}
+```
+
+#### Update Status
+```http
+PATCH /api/requests/:id/status
+Authorization: Bearer <token>
+Content-Type: application/json
+
+{
+  "status": "IN_PROGRESS",
+  "assignedToId": "clx123..."
+}
+```
+
+---
+
+### Dashboard Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|--------|----------|-------------|---------------|
+| `GET` | `/dashboard/stats` | Get dashboard statistics | ✅ |
+| `GET` | `/dashboard/recent` | Get recent activities | ✅ |
+
+---
+
+## 📱 Frontend Pages & Components
+
+### Pages
+
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/` | `LandingPage` | Public landing page |
+| `/login` | `LoginPage` | User authentication |
+| `/register` | `RegisterPage` | User registration |
+| `/dashboard` | `Dashboard` | Main dashboard with stats |
+| `/equipment` | `EquipmentPage` | Equipment management |
+| `/teams` | `TeamsPage` | Team management |
+| `/requests` | `RequestsPage` | Kanban board for work orders |
+| `/calendar` | `CalendarPage` | Calendar view for scheduling |
+| `/reports` | `ReportsPage` | Reports and analytics |
+| `/documentation` | `DocumentationPage` | Help & documentation |
+
+### Key Components
+
+#### UI Components (`/components/ui/`)
+- `Button` - Customizable button with variants
+- `Input`, `TextArea` - Form inputs
+- `Select` - Dropdown selection
+- `Modal` - Dialog/modal component
+- `Badge` - Status and priority badges
+- `Card` - Content containers
+
+#### Layout Components (`/components/layout/`)
+- `Sidebar` - Navigation sidebar
+- `Header` - Page headers
+- `Layout` - Main layout wrapper
+
+### Custom Hooks
+
+| Hook | Purpose |
+|------|---------|
+| `useAuth()` | Authentication state and methods |
+| `useEquipment()` | Equipment CRUD operations |
+| `useTeams()` | Team CRUD operations |
+| `useRequests()` | Request CRUD operations |
+
+---
+
+## 🗄️ Database Schema
+
+### Enums
+
+```prisma
+enum Role {
+  ADMIN
+  MANAGER
+  TECHNICIAN
+  USER
+}
+
+enum Category {
+  MACHINERY
+  VEHICLE
+  IT_EQUIPMENT
+  ELECTRICAL
+  HVAC
+  PLUMBING
+  OTHER
+}
+
+enum EquipmentStatus {
+  OPERATIONAL
+  UNDER_MAINTENANCE
+  SCRAPPED
+  DECOMMISSIONED
+}
+
+enum RequestType {
+  CORRECTIVE
+  PREVENTIVE
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum RequestStatus {
+  NEW
+  IN_PROGRESS
+  REPAIRED
+  SCRAP
+}
+```
+
+### Entity Relationship Diagram
+
+```
+┌─────────────────┐       ┌─────────────────┐
+│      User       │       │ MaintenanceTeam │
+├─────────────────┤       ├─────────────────┤
+│ id              │       │ id              │
+│ email           │◄──────│ name            │
+│ password        │       │ specialization  │
+│ name            │       │ description     │
+│ role            │       └────────┬────────┘
+│ department      │                │
+└────────┬────────┘                │
+         │                         │
+         │  ┌───────────────┐      │
+         ├──►  TeamMember   ◄──────┘
+         │  ├───────────────┤
+         │  │ userId        │
+         │  │ teamId        │
+         │  │ role          │
+         │  └───────────────┘
+         │
+         │       ┌─────────────────┐
+         │       │   Equipment     │
+         ├──────►├─────────────────┤
+         │       │ id              │
+         │       │ name            │
+         │       │ serialNumber    │
+         │       │ category        │
+         │       │ status          │
+         │       │ maintenanceTeamId
+         │       └────────┬────────┘
+         │                │
+         │                │
+         │  ┌─────────────▼──────────────┐
+         └─►│   MaintenanceRequest       │
+            ├────────────────────────────┤
+            │ id                         │
+            │ subject                    │
+            │ description                │
+            │ type                       │
+            │ priority                   │
+            │ status                     │
+            │ equipmentId                │
+            │ teamId                     │
+            │ createdById                │
+            │ assignedToId               │
+            └────────────────────────────┘
+```
+
+---
+
+## 📖 Usage Guide
+
+### 1. Register & Login
+
+1. Navigate to `/register`
+2. Fill in your details (name, email, password, role)
+3. After registration, you'll be redirected to the dashboard
+
+### 2. Add Equipment
+
+1. Go to **Equipment** page
+2. Click **"+ Add Equipment"**
+3. Fill in details:
+   - Name, Serial Number
+   - Category (Machinery, HVAC, etc.)
+   - Department, Location
+   - Purchase Date, Warranty
+   - Assign a Maintenance Team (optional)
+4. Click **Create**
+
+### 3. Create Maintenance Teams
+
+1. Go to **Teams** page
+2. Click **"+ Create Team"**
+3. Enter team name and specialization
+4. Add team members from registered users
+
+### 4. Submit Work Orders
+
+1. Go to **Work Orders** (Requests) page
+2. Click **"+ New Request"**
+3. Fill in:
+   - Subject and Description
+   - Priority (Critical, High, Medium, Low)
+   - Type (Corrective or Preventive)
+   - Select Equipment (team auto-fills!)
+4. Submit the request
+
+### 5. Manage Work Orders (Kanban)
+
+- **Drag and drop** cards between columns
+- Columns: `New → In Progress → Repaired → Scrap`
+- **Red indicator** shows overdue tasks
+- Click quick action buttons to advance status
+
+### 6. Schedule Preventive Maintenance
+
+1. Go to **Calendar** page
+2. View scheduled maintenance tasks
+3. Click dates to add new scheduled maintenance
+
+### 7. View Reports
+
+1. Go to **Reports** page
+2. View analytics:
+   - Requests by Team
+   - Requests by Equipment Category
+   - Priority distribution
+   - Status breakdown
+
+---
+
+## 🔄 Development Workflow
+
+### Backend Development
+
+```bash
+cd backend
+
+# Start development server with hot reload
+npm run dev
+
+# Build for production
+npm run build
+
+# Generate Prisma client
+npx prisma generate
+
+# Create migration
+npx prisma migrate dev --name <migration-name>
+
+# View database in Prisma Studio
+npx prisma studio
+```
+
+### Frontend Development
+
+```bash
+cd frontend
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Lint code
+npm run lint
+```
+
+### Environment Variables
+
+#### Backend (`.env`)
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/gearguard"
+JWT_SECRET="your-secret-key"
+PORT=5000
+NODE_ENV=development
+```
+
+#### Frontend (`.env`)
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions from the community!
+
+### How to Contribute
+
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
+3. **Commit** your changes: `git commit -m 'Add amazing feature'`
+4. **Push** to the branch: `git push origin feature/amazing-feature`
+5. **Open** a Pull Request
+
+### Code Guidelines
+
+- Follow TypeScript best practices
+- Use ESLint and Prettier for code formatting
+- Write meaningful commit messages
+- Include tests for new features
+- Update documentation as needed
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+- [Prisma](https://www.prisma.io/) for the excellent ORM
+- [Framer Motion](https://www.framer.com/motion/) for smooth animations
+- [Lucide React](https://lucide.dev/) for beautiful icons
+
+---
+
+<div align="center">
+
+**Built with ❤️ for the Odoo Hackathon**
+
+[⬆ Back to Top](#️-gearguard-the-ultimate-maintenance-tracker)
+
+</div>

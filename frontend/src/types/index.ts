@@ -143,6 +143,8 @@ export interface RequestFormData {
 
 // Dashboard Statistics
 export interface DashboardStats {
+    overdueRequests: any;
+    pendingRequests: string | number;
     totalEquipment: number;
     operationalEquipment: number;
     underMaintenance: number;
