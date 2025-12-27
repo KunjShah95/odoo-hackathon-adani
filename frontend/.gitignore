@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 implementation_plan.md
 task.md
+frontend/node_modules
+backend/node_modules

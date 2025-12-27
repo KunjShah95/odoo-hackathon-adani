@@ -10,11 +10,12 @@ import { getRelativeTime, cn } from '../utils/helpers';
 const mockStats: DashboardStats = {
     totalEquipment: 156,
     operationalEquipment: 142,
+    underMaintenance: 14,
     totalTeams: 8,
     totalRequests: 324,
-    pendingRequests: 12,
+    newRequests: 12,
+    inProgressRequests: 14,
     completedRequests: 298,
-    overdueRequests: 3,
 };
 
 const mockRecentRequests: Partial<MaintenanceRequest>[] = [
@@ -96,10 +97,10 @@ export function Dashboard() {
                         color="bg-indigo-600"
                     />
                     <StatCard
-                        label="Pending Tasks"
-                        value={mockStats.pendingRequests}
+                        label="New Requests"
+                        value={mockStats.newRequests}
                         icon="solar:clipboard-list-bold-duotone"
-                        trend={`${mockStats.overdueRequests} Overdue`}
+                        trend={`${mockStats.inProgressRequests} In Progress`}
                         color="bg-amber-600"
                     />
                     <StatCard
@@ -219,7 +220,15 @@ export function Dashboard() {
     );
 }
 
-function StatCard({ label, value, icon, trend, color }: any) {
+interface StatCardProps {
+    label: string;
+    value: number;
+    icon: string;
+    trend: string;
+    color: string;
+}
+
+function StatCard({ label, value, icon, trend, color }: StatCardProps) {
     return (
         <motion.div
             variants={itemVariants}
@@ -248,8 +257,15 @@ function StatCard({ label, value, icon, trend, color }: any) {
     );
 }
 
-function AlertItem({ type, title, desc, icon }: any) {
-    const styles: any = {
+interface AlertItemProps {
+    type: 'danger' | 'warning' | 'primary';
+    title: string;
+    desc: string;
+    icon: string;
+}
+
+function AlertItem({ type, title, desc, icon }: AlertItemProps) {
+    const styles: Record<string, string> = {
         danger: 'border-rose-500/20 bg-rose-500/5 text-rose-400',
         warning: 'border-amber-500/20 bg-amber-500/5 text-amber-400',
         primary: 'border-primary/20 bg-primary/5 text-primary',

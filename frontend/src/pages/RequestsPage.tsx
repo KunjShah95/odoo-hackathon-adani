@@ -144,7 +144,7 @@ export function RequestsPage() {
                                         <div className="flex justify-between items-start mb-4">
                                             <div className="flex flex-wrap gap-2">
                                                 <PriorityBadge priority={request.priority} />
-                                                <Badge variant={request.type === 'CORRECTIVE' ? 'rose' : 'indigo'} size="sm" className="text-[8px] tracking-widest font-black">
+                                                <Badge variant={request.type === 'CORRECTIVE' ? 'danger' : 'info'} size="sm" className="text-[8px] tracking-widest font-black">
                                                     {request.type}
                                                 </Badge>
                                             </div>

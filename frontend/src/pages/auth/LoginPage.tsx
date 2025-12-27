@@ -6,7 +6,7 @@ import { Button } from '../../components/ui/Button';
 import { motion } from 'framer-motion';
 
 const springTransition = {
-    type: "spring",
+    type: "spring" as const,
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
@@ -141,7 +141,7 @@ export function LoginPage() {
                         <div className="space-y-3">
                             <div className="flex justify-between px-1">
                                 <label className="text-[10px] font-black uppercase tracking-[0.4em] text-zinc-700 italic">Access_Cipher</label>
-                                <Link to="/forgot-password" size="sm" className="text-[10px] font-black text-zinc-600 hover:text-primary tracking-widest transition-colors">CIPHER_RECOVERY</Link>
+                                <Link to="/forgot-password" className="text-[10px] font-black text-zinc-600 hover:text-primary tracking-widest transition-colors">CIPHER_RECOVERY</Link>
                             </div>
                             <div className="relative group">
                                 <div className="absolute left-6 top-1/2 -translate-y-1/2 opacity-20 group-focus-within:opacity-100 transition-opacity">
